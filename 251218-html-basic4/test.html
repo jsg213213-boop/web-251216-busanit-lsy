@@ -11,6 +11,13 @@
     <header>
         <h1>회사로고</h1>
     </header>
+    <nav> <a href="#">홈</a> <a href="#">소개</a> </nav>
+    <nav>
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+        </ul>
+    </nav>
     <!-- <article><header>글 제목/작성일</header>...</article> -->
 
     <h1>태그 복습 및 정리</h1>
@@ -24,12 +31,39 @@
     <span>현재 태그의 콘텐츠 영역 만큼만 차지함.</span>
 
 
+
+
     <main> 본문 내용 작성하기.
         <section>
             <h2>자기소개</h2> ...
         </section>
         <section>
             <h2>포트폴리오</h2> ...
+        </section>
+        <section>
+            <h2>이미지 크기 예시</h2>
+            <img src="cat1.jpeg" width="200" height="200" alt="고양이">
+        </section>
+        <section>
+            <h2>이미지 크기 예시2</h2>
+            <img src="sun1.jpg" width="100%" alt="거북이">
+        </section>
+        <section>
+            <h2>이미지 크기 예시3</h2>
+            <style>
+                .responsive-img {
+                    max-width: 100%;
+                    height: auto;
+                    /* 비율 유지 */
+                }
+            </style>
+
+            <img src="cat2.jpg" class="responsive-img" alt="풍경">
+        </section>
+         <section>
+            <h2>이미지 크기 예시4</h2>
+            <img src="dog1.jpg" width="100%" alt="강아지"
+            style="width: 150px; height: 150px; object-fit: cover;" >
         </section>
     </main>
 
