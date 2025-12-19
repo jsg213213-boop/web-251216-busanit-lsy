@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>html 기본 문법 정리</title>
 </head>
 
 <body>
@@ -61,8 +61,22 @@
             <img src="cat2.jpg" class="responsive-img" alt="풍경">
         </section>
         <section>
-            <h2>이미지 크기 예시4</h2>
-            <img src="dog1.jpg" width="100%" alt="강아지" style="width: 150px; height: 150px; object-fit: fill;">
+            <h2>이미지 크기 예시4- object-fit: cover</h2>
+            <p>영역을 가득 채우도록 비율 유지하며 자름 (가장 많이 사용)</p>
+            <img src="dog1.jpg" width="100%" alt="강아지" 
+            style="width: 150px; height: 150px; object-fit: cover;">
+        </section>
+         <section>
+            <h2>이미지 크기 예시5-object-fit: fill</h2>
+            <p>기본값. 영역에 맞춰 이미지를 늘림 (비율 깨짐)</p>
+            <img src="dog1.jpg" width="100%" alt="강아지" 
+            style="width: 150px; height: 150px; object-fit: fill;">
+        </section>
+         <section>
+            <h2>이미지 크기 예시6-object-fit: contain</h2>
+            <p>이미지 전체가 보이도록 비율을 유지하며 맞춤 (여백 생길 수 있음)</p>
+            <img src="dog1.jpg" width="100%" alt="강아지" 
+            style="width: 150px; height: 150px; object-fit: contain;">
         </section>
         <section>
             <h2>폼 태그 내부의 input 태그 예시1 -type="password"</h2>
@@ -114,7 +128,7 @@
         </section>
         <section>
             <h2>폼 태그 내부의 input 태그 예시12 -type="reset"</h2>
-            <input type="reset" value="다시 쓰기">
+            <input type="reset" value="초기화">
         </section>
         </section>
         <section>
@@ -240,6 +254,12 @@
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+          <section>
+            <h2>iframe 태그 예시3 유튜브 영상 퍼오기2</h2>
+            <div>
+               <iframe width="560" height="315" src="https://www.youtube.com/embed/DnHfiIzz8xk?si=K0WQptSd0_zNt9a2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </section>
         <section>
