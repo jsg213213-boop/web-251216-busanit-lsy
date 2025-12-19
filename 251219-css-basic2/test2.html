@@ -14,10 +14,14 @@
 
             padding: 20px;
             /* 2. 안쪽 여백: 글자가 테두리에 딱 붙지 않게 함 */
-            border: 2px solid blue;
+            border: 10px solid blue;
             /* 3. 테두리: 2px 두께의 파란 실선 */
             margin: 30px;
             /* 4. 바깥 여백: 다른 요소와 30px 떨어짐 */
+            /* 실제 가로 크기는 300px 주었지만, 웹 브라우저에서 확인 해보니 360px 나온다?
+            뭔가 이상하다. 그래서, 효과를 이용해서, 크기를 지정한 크기만큼만 
+            차지하게 변경하자 */
+            box-sizing: border-box;
         }
     </style>
 </head>
