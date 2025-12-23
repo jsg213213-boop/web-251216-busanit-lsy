@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="nameInput" placeholder="이름을 입력하세요">
+
+    <button id="greetBtn">인사하기</button>
+
+    <h2 id="resultText">결과가 여기에 나옵니다.</h2>
+
+    <h2>실습 7 알림창(Alert) 버전</h2>
+    <!-- 실습 7 -->
+    <!-- 새로운 버튼 추가(버튼내용:알림창(Alert) 버전),  -->
+    <button id="alertBtn">알림창(Alert) 버전</button>
+
+    <h2>실습 8 숫자 더하기 계산 버전</h2>
+    <!-- `input`을 2개 만들고 (`id="num1"`, `id="num2"`), 
+    새로운 버튼 추가(버튼내용:숫자 더하기 계산 버전) -->
+
+    <input type="text" id="num1" placeholder="숫자1">
+    <input type="text" id="num2" placeholder="숫자2">
+    <button id="plusBtn">숫자 더하기 계산 버전</button>
+
+    <!-- 실습9
+       실시간 따라쓰기
+       새로운 입력창을 추가하기. 
+       새로운 결과화면을 추가하기. -->
+    <h2>실습 9 실시간 따라쓰기 버전</h2>
+    <input type="text" id="liveInput" placeholder="실시간 따라쓰기 버전">
+    <h2 id="liveResultText">결과가 여기에 나옵니다.</h2>
+
+    <script>
+        const input = document.getElementById('nameInput');
+        const btn = document.getElementById('greetBtn');
+        const result = document.getElementById('resultText');
+
+        btn.addEventListener('click', function () {
+            // 1. 입력창에 적힌 값을 가져온다 (.value)
+            const userName = input.value;
+
+            // 2. 가져온 값이 비어있는지 확인 (선택 사항)
+            if (userName === "") {
+                alert("이름을 꼭 입력해주세요!");
+            } else {
+                // 3. 결과를 화면에 보여준다
+                result.innerText = userName + "님, 환영합니다!";
+
+                // 4. 입력창 비우기 (센스!)
+                input.value = "";
+            }
+        });
+
+        //실습 7
+        // 알림창(Alert) 버전**
+        // 화면에 글씨를 띄우는 대신, 
+        // 새로운 버튼 추가(버튼내용:알림창(Alert) 버전), 
+        // 누르면 `alert()` 창으로 **"OOO님 안녕하세요!"**라고 뜨게 바꿔보세요.
+
+        // 요소 선택 
+        const alertBtn = document.getElementById("alertBtn");
+        // 요소, 이벤트 리스너 작업 진행. 
+        alertBtn.addEventListener('click', function () {
+            const name = input.value;
+            // 누르면 `alert()` 창으로 **"OOO님 안녕하세요!"**라고 뜨게 바꿔보세요.
+            alert(name + "님 안녕하세요!");
+            // 4. 입력창 비우기 (센스!)
+            input.value = "";
+        })
+
+        //실습8
+        // 위의 코드를 변경 및 수정 
+        // 숫자 더하기 계산, 
+        // `input`을 2개 만들고 (`id="num1"`, `id="num2"`), 
+        // 새로운 버튼 추가(버튼내용:숫자 더하기 계산 버전)
+        // 두 숫자를 더한 값을 `alert`로 띄워보세요.
+
+        // * **힌트:** `input`에서 가져온 값은 무조건 **문자(Text)** 취급됩니다. 
+        // 숫자로 바꾸려면 `Number(값)`을 사용해야 합니다. 
+        // (예: `Number(input.value)`)
+
+        const num1 = document.getElementById("num1");
+        const num2 = document.getElementById("num2");
+        const plusBtn = document.getElementById("plusBtn");
+
+        plusBtn.addEventListener('click', function () {
+            // num1.value : 결과가 문자열.  숫자로 변경
+            // 숫자로 변경, Number(문자열) => 결과는 숫자 타입으로변경 이용
+            const val1 = Number(num1.value);
+            const val2 = Number(num2.value);
+            const sum = val1 + val2;
+            alert("두 숫자의 합은 : " + sum);
+        }
+        );
+
+        //실습9
+        // 실시간 따라쓰기
+        // 새로운 입력창을 추가하기. 
+        // 새로운 결과화면을 추가하기.
+        // 버튼을 누르지 않아도, **입력하는 즉시** 
+        // 아래쪽 글자가 바뀌게 하려면 어떻게 해야 할까요?
+
+        // * **힌트:** `addEventListener`의 이벤트 이름을 `'click'` 대신 
+        // **`'input'`**으로 바꿔보세요.
+
+        // <input type="text" id="liveInput" placeholder="실시간 따라쓰기 버전">
+        // <h2 id="liveResultText">결과가 여기에 나옵니다.</h2>
+        const liveInput = document.getElementById("liveInput");
+        const liveResultText = document.getElementById("liveResultText");
+
+        liveInput.addEventListener('input', function(){
+            liveResultText.innerText = liveInput.value;
+        })
+
+    </script>
+
+</body>
+
+</html>
