@@ -118,7 +118,7 @@ function deleteTodo(id) {
 // 예시)
 // 순서6
 function save() {
-  localStorage.setItem('myTodos', JSON.stringfy(todoData));
+  localStorage.setItem('myTodos', JSON.stringify(todoData));
 }
 
 // 불러오기 
