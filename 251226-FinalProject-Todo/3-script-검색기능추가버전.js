@@ -1,10 +1,9 @@
 //1 필요한 요소 선택. 
 const input = document.getElementById('taskInput');
+// btn -> addBtn , 변경
 const addBtn = document.getElementById('addBtn');
+// list -> listContainer, 변경
 const listContainer = document.getElementById('taskList');
-
-const searchBox = document.getElementById('searchBox')
-const searchBtn = document.getElementById('searchBtn')
 
 // 추가 순서10, 
 let todoData = JSON.parse(localStorage.getItem('myTodos')) || [];
@@ -26,16 +25,10 @@ function render(dataArray) {
   // 기존 내용을 다 지우고,
   listContainer.innerHTML = "";
 
-  // 데이터가 없을 때 안내 메시지 (선택사항)
-    if (dataArray.length === 0) {
-        listContainer.innerHTML = '<div style="padding:10px; color:#888;">표시할 내용이 없습니다.</div>';
-        return;
-    }
-
   //  새로 요소를 그릴 예정. 새로고침 효과.
   // 기반이 데이터를 중심으로 한다. 그 데이터는 배열에 들어있다. 
   //  배열과, 반복문을 같이 사용하는 함수 소개. forEach(function(){}), 이 기법사용.
-  dataArray.forEach( function(todo) {
+  todoData.forEach( function(todo) {
 	 listContainer.innerHTML += `
     <li>
 	  <span>${todo.text}</span>
@@ -211,7 +204,8 @@ function updateTodo(id) {
 }
 
 // 순서15
-
+const searchBox = document.getElementById('searchBox')
+const searchBtn = document.getElementById('searchBtn')
 
 // 이벤트 리스너(경비원) 추가 , 무엇을 감지? 키보드를 입력 후 
 // 키를 누른 상태를 down, 키를 떼는 순간을 up. 이벤트 감지 
