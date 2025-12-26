@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>동물 버킷리스트</h2>
+    <div id="animal-list" style="display: flex;">
+
+    </div>
+    <script>
+        //#### 🧩 문제 (JavaScript 작성)
+
+        // 1. 아래 `animals` 데이터를 사용하세요.
+        // 2. `img` 태그를 사용해야 합니다.
+        // 3. `<img src="주소">` 부분의 주소 자리에 `${item.img}`를 넣어보세요.
+        // 힌트,
+        // 이미지 파일의 위치를 , 현재 작업하는  html 파일과 같은 폴더로 이동후 
+        // 해당 파일명으로 불러와서 작업 해주세요. 
+        //  <img src="coding.jpg" width="70%">
+        // 4. 이미지 크기는 `width: 200px` 정도로 스타일을 주세요.
+
+        const animals = [
+            { name: "고양이1", img: "cat1.jpeg" },
+            { name: "고양이2", img: "cat2.jpg" },
+            { name: "고양이3", img: "cat3.jpg" }
+        ];
+
+        const animalContainer = document.getElementById('animal-list');
+
+        // 배열의 forEach 기능을 이용해서, 배열의 객체 요소를 하나씩 꺼내서 
+        // 정보를 HTML 상에 출력하기. 
+        animals.forEach(function (animal) {
+            // 이미지 태그의 src 속성을 이용해서, html 에, innerHTML 형식으로 추가하기. 
+            animalContainer.innerHTML += `
+              <div style="margin-right: 20px; text-align: center">
+                <img src="${animal.img}" style="width: 200px; height: 150px; border-radius: 10px">
+                <h3>좋아하는 동물 이름 : ${animal.name}</h3>
+              </div>
+            `
+        }) // 함수 이름이 없는 익명 함수 형식으로 1회용으로 사용함. 
+    </script>
+</body>
+
+</html>

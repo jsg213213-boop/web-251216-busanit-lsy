@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>실습3</h2>
+    <h2 id="name">이름 없음</h2>
+    <script>
+        const h2Tag = document.getElementById("name");
+        h2Tag.innerText = "이상용";
+        h2Tag.style.color = "green";
+    </script>
+
+    <h2>실습4</h2>
+    <p id="price">50,000원</p>
+    <script>
+        const priceTag = document.getElementById("price");
+        priceTag.innerText = "30,000원 (세일 중!)";
+        priceTag.style.color = "red";
+        priceTag.style.fontSize = "30px";
+    </script>
+</body>
+
+</html>
