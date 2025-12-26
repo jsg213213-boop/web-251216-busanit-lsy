@@ -41,6 +41,7 @@ function render(dataArray) {
  
 } //render 닫는 태그 
 
+// 순서3
 // 추가, 삭제하는 로직을 배열 형식으로 작업방법으로 변경. 
 
 // 추가 기능 ( 데이터 추가 -> 그리기)
@@ -65,7 +66,36 @@ function addTodo() {
 
 }
 
+// 순서4
 // 추가 기능 이벤트 연결 
 // 추가 버튼 클릭 , 리스너(경비원)에게 감지가 된다면,
 // 리스너는 , 실행 할 함수 : addTodo
 addBtn.addEventListener('click',addTodo )
+
+// 순서5
+// 삭제 기능(배열에서 데이터 제외 -> 그리기)
+function deleteTodo(id) {
+    if(confirm("정말 삭제하시겠습니까?")){
+        // 해당 id가 아닌 것만 남기기(필터링)
+        todoData = todoData.filter(item => item.id !==id);
+        // 예시) 인덱스   0       1       2
+        // 가정)  id     0        1      2
+        // todoData = ["사과","바나나", "딸기"]
+        // filter 함수는 해당 로직의 참을 만족하는 요소만 남기고, 나머지는 제외합니다. 
+        // filter는 배열 안의 모든 요소를 순회한다. 모든 요소를 검사함. 
+        // item : todoData 배열의 요소를 하나씩 꺼내서 담기. 
+        // 삭제할 요소의 인덱스 : 1(바나나, id : 1)
+        // 반복1
+        // item : 사과, => item.id(사과 id : 0) !== (id: 1) 달라서, 참. 사과 남아요.
+        // 반복2
+        // item : 바나나, => item.id(바나나 id : 1) !== (id: 1) 같아서, 거짓. 바나나는 안 남아요.
+        // 반복3
+        // item : 딸기, => item.id(딸기 id : 2) !== (id: 1) 달라서, 참. 딸기 남아요.
+        // 결론, 
+        // todoData.filter(item => item.id !==id); 진행 후, 남아 있는 내용?
+        // todoData = ["사과", "딸기"]
+
+
+        render(todoData); //변경된 데이터로 다시 그리기. 
+    }
+}
