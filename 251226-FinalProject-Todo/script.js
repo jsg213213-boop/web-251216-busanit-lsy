@@ -27,30 +27,67 @@ function render(dataArray) {
   listContainer.innerHTML = "";
 
   // 데이터가 없을 때 안내 메시지 (선택사항)
+
+  // 방법1, 
+  // 일반 css 인라인 작업. 
+    // if (dataArray.length === 0) {
+    //     listContainer.innerHTML = '<div style="padding:10px; color:#888;">표시할 내용이 없습니다.</div>';
+    //     return;
+    // }
+
+    // 방법2 
+    // tailwind css 작업. 
+    // 데이터가 없을 때 안내 메시지
     if (dataArray.length === 0) {
-        listContainer.innerHTML = '<div style="padding:10px; color:#888;">표시할 내용이 없습니다.</div>';
+        listContainer.innerHTML = `
+            <div class="text-center text-gray-400 py-10">
+                할 일이 없습니다. 작성해보세요! 📝
+            </div>`;
         return;
     }
 
   //  새로 요소를 그릴 예정. 새로고침 효과.
   // 기반이 데이터를 중심으로 한다. 그 데이터는 배열에 들어있다. 
   //  배열과, 반복문을 같이 사용하는 함수 소개. forEach(function(){}), 이 기법사용.
-  dataArray.forEach( function(todo) {
-	 listContainer.innerHTML += `
-    <li>
-	  <span>${todo.text}</span>
-	  <div>
-		<button class="edit-btn" onclick="updateTodo(${todo.id})">
-		  수정
-		</button>
-		<button class="del-btn" onclick="deleteTodo(${todo.id})">
-		  삭제
-		</button>
-	  </div>
-	</li>
-  `
-  } // forEach닫는 태그 
-  )  //render 닫는 태그 
+  //
+  // 방법1 , 일반 css 인라인 구성
+//   dataArray.forEach( function(todo) {
+// 	 listContainer.innerHTML += `
+//     <li>
+// 	  <span>${todo.text}</span>
+// 	  <div>
+// 		<button class="edit-btn" onclick="updateTodo(${todo.id})">
+// 		  수정
+// 		</button>
+// 		<button class="del-btn" onclick="deleteTodo(${todo.id})">
+// 		  삭제
+// 		</button>
+// 	  </div>
+// 	</li>
+//   `
+
+//   } // forEach닫는 태그 
+//   )  //render 닫는 태그 
+// 방법2 
+// tailwind 버전, 코드는 그대로, css 만 변경이 됨. 
+dataArray.forEach(function(todo) {
+        listContainer.innerHTML += `
+            <li class="flex justify-between items-center p-4 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition">
+                <span class="text-gray-700 font-medium">${todo.text}</span>
+                
+                <div class="flex gap-2">
+                    <button onclick="updateTodo(${todo.id})" 
+                        class="text-sm bg-green-100 text-green-600 px-3 py-1.5 rounded-md hover:bg-green-200 transition font-bold">
+                        수정
+                    </button>
+                    <button onclick="deleteTodo(${todo.id})" 
+                        class="text-sm bg-red-100 text-red-600 px-3 py-1.5 rounded-md hover:bg-red-200 transition font-bold">
+                        삭제
+                    </button>
+                </div>
+            </li>
+        `;
+    });
  
 } //render 닫는 태그 
 
