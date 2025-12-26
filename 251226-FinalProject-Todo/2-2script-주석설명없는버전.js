@@ -55,5 +55,7 @@ function deleteTodo(id) {
 function save() {
   localStorage.setItem('myTodos', JSON.stringfiy(todoData));
 }
-
-
+function updateTodo(id) {
+const item = todoData.find(item => item.id ===id); // 수정할 대상 찾기
+const newText = prompt("내용을 수정하세요: ", item.text);
+}
