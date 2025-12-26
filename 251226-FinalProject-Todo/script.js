@@ -5,11 +5,17 @@ const addBtn = document.getElementById('addBtn');
 // list -> listContainer, 변경
 const listContainer = document.getElementById('taskList');
 
+// 추가 순서10, 
+let todoData = JSON.parse(localStorage.getItem('myTodos')) || [];
+
+// 불러온 데이터 그리기, 순서11
+render(todoData)
+
 // 251226- 8일차 작업 진행. 
 
 // 순서1
 // 데이터 저장할 저장소 배열 만들기. 
-let todoData = [];
+// let todoData = [];
 
 // 순서2
 // 그리기 함수 정의 - 함수명은 보통 소문자 시작. 
@@ -25,7 +31,7 @@ function render(dataArray) {
   todoData.forEach( function(todo) {
 	 listContainer.innerHTML += `
     <li>
-	  <span>${todo.text}<span>
+	  <span>${todo.text}</span>
 	  <div>
 		<button class="edit-btn" onclick="updateTodo(${todo.id})">
 		  수정
@@ -112,7 +118,7 @@ function deleteTodo(id) {
 // 예시)
 // 순서6
 function save() {
-  localStorage.setItem('myTodos', JSON.stringfiy(todoData));
+  localStorage.setItem('myTodos', JSON.stringfy(todoData));
 }
 
 // 불러오기 
@@ -143,3 +149,12 @@ function save() {
 //     save(); // <--- 추가!
 //     render(todoData);
 // }
+
+// 순서 10 
+// 불러오기 기능을 , 순서 조정. 위쪽에서 진행..
+//let todoData = JSON.parse(localStorage.getItem('myTodos')) || [];
+
+
+// 순서11
+// 불러온 데이터 그리기, 
+// render(todoData)
