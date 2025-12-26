@@ -1,56 +1,9 @@
 //1 필요한 요소 선택. 
 const input = document.getElementById('taskInput');
-const btn = document.getElementById('addBtn');
-const list = document.getElementById('taskList');
-
-//2 버튼 클릭 이벤트 리스너 설정. 
-btn.addEventListener('click', function () {
-    // 2-1 입력한 값 가져오기 
-    const todo = input.value;
-
-    // 2-2. 기본 유효성 검사. todo 내용이 비어 있으면, 실행 안함. 
-    if (todo === "") {
-        alert('할 일을 입력해주세요.')
-        return; // function() { , 익명함수 실행을 중단. 
-    }
-
-    // 2-3 목록에 태그를 추가하기. 
-    // 방법1, 
-    // list.innerHTML += `
-    // <li> 
-    //   ${todo} 
-    //   <button onclick="this.parentElement.remove()">삭제</button>
-    // </li>
-    // `
-
-    // 방법2 
-    // 요소를 하나씩 만들어서 붙이는 방식. 
-    // 방법2-1. li 태그를 만들기. 
-    const li = document.createElement('li');
-    // 방법2-1-2 li 태그의 내용을 , 입력한 todo 의내용을 넣기. 
-    li.textContent = todo;
-
-    // 방법2-2. 삭제 버튼 만들기 
-    const btn = document.createElement('button');
-    // 방법2-2-2, 버튼에 삭제 내용 넣기. 
-    btn.textContent = '삭제';
-
-    // 방법2-3 삭제 기능 연결 (클릭시 실행 )
-    btn.addEventListener('click', function(){
-        // 방법2-3-2 버튼 클릭시, 부모 li를 삭제 
-        this.parentElement.remove();
-    })
-
-    // 방법2-4 위의 기능들을 조립하기. 
-    // li 태그의 자식으로 버튼을 넣기. 
-    // <li>  <button> </button></li> 
-    li.appendChild(btn);
-    // <ul> <li>  <button> </button></li>  </ul>
-    list.appendChild(li);
-
-    // 2-4  입력창을 비우기 작업. 
-    input.value = ""
-})
+// btn -> addBtn , 변경
+const addBtn = document.getElementById('addBtn');
+// list -> listContainer, 변경
+const listContainer = document.getElementById('taskList');
 
 // 251226- 8일차 작업 진행. 
 
@@ -87,3 +40,32 @@ function render(dataArray) {
   )  //render 닫는 태그 
  
 } //render 닫는 태그 
+
+// 추가, 삭제하는 로직을 배열 형식으로 작업방법으로 변경. 
+
+// 추가 기능 ( 데이터 추가 -> 그리기)
+function addTodo() {
+    // 할일 입력창에, 문자열이 없는 경우, 경고창을 띄우기 
+    if(input.value === "") {
+        alert("내용을 필수로 입력해주세요.");
+        return; // addTodo 함수를 중단하기. 
+    }
+
+    // 비어있지않다. 즉, 할일 내용이 있다. 
+    const newTodo = {
+        // id , 각 todo마다 고유값을 날짜 형식으로 지정. 
+        id: Date.now(),
+        text: input.value
+    }
+
+    // 새로운 할일, 배열에 추가 
+    todoData.push(newTodo); // 1 데이터 배열 추가(배열에 맨뒤로)
+    render(todoData); // 2 화면을 다시 그리기
+    input.value = ""; // 3 입력창 비우기 
+
+}
+
+// 추가 기능 이벤트 연결 
+// 추가 버튼 클릭 , 리스너(경비원)에게 감지가 된다면,
+// 리스너는 , 실행 할 함수 : addTodo
+addBtn.addEventListener('click',addTodo )
